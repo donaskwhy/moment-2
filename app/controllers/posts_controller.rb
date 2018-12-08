@@ -1,9 +1,6 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-
-  def index
-    @posts = Post.all.reverse
-  end
 
   def new
     @post = Post.new
@@ -11,6 +8,8 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @post.user_name = current_user.user_name
+    @post.user_id = current_user.id
     @post.save
 
     redirect_to '/posts/'
@@ -34,6 +33,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :content, :user_name)
+    params.require(:post).permit(:title, :content, :name)
   end
 end
