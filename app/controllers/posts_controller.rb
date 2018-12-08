@@ -12,19 +12,19 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id
     @post.save
 
-    redirect_to '/posts/'
+    redirect_to '/mypages/'
   end
 
   def update
      @post.update(post_params)
 
-     redirect_to '/posts/'
+     redirect_to '/mypages/'
   end
 
   def destroy
     @post.destroy
 
-    redirect_to '/posts/'
+    redirect_to '/mypages/'
   end
 
   private
@@ -33,6 +33,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :content, :name)
+    params.require(:post).permit(:title, :content, :user_name, :user_id, :image)
   end
 end

@@ -5,5 +5,8 @@
   <%=f.label :content, "내용", rows:"3"%>
   <%=f.text_area :content %><br>
 
+  <%=f.label :image, "이미지" %>
+  <%=f.file_field :image, accept: 'image/png,image/gif,image/jpg' %><br>
+
   <%=f.submit "제출"%>
 <%end%>
