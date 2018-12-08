@@ -1,4 +1,14 @@
-
+<div class="grid">
+  <div class="grid-box a"></div>
+  <div class="grid-box b"><h5>info</h5><br><h6></h6></div>
+  <div class="grid-box c">
+    Follow/Unfollow
+  </div>
+    <div class="grid-box d"><a href="">설정</a></div>
+  <div class="grid-box e">
+    <h6>each</h6><br>
+  </div>
+  </div>
 
 <div class="list">
   <ul class="tabs tabs-fixed-width tab-demo z-depth-1">
@@ -9,3 +19,48 @@
     <li class="tab waves-effect waves-pink"><a href="">태그됨</a></li>
   </ul>
 </div>
+
+
+<style>
+  .grid {
+    width: 1519px;
+    padding: 0px 270px 0px 270px ;
+    display: grid;
+    grid-template: 1fr 1fr / 2fr 6fr 1fr 1fr;
+  }
+
+  .grid .grid-box {
+    background-color: #FAFAFA;
+    color: black;
+    border-radius: 5px;
+    border: 2px dodgerblue solid;
+    grid-gap: 10px;
+  }
+
+  .grid .a {
+    grid-row-start: 1;
+    grid-row-end: 1;
+  }
+
+  .grid .b {
+    grid-row-start: 1;
+    grid-row-end: 2;
+  }
+
+  .grid .c {
+    grid-row-start: 1;
+    grid-row-end: 2;
+  }
+
+  .grid .d {
+    grid-row-start: 1;
+    grid-row-end: 2;
+  }
+
+  .grid .e {
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 2;
+    grid-column-end: 5;
+  }
+</style>
