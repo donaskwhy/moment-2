@@ -1,0 +1,7 @@
+<% if user_signed_in? %>
+  <%= link_to "알람", user_alarm_path(current_user) %>
+  <%= link_to "마페", mypage_path(current_user) %>
+<% else %>
+  <%= link_to '로그인', new_user_session_path, method: :get %>
+  <%= link_to '회원가입', new_user_registration_path, method: :get %>
+<% end %>
