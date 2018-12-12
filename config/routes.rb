@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :mypages, only: [:show]
   resources :friends, only: [:create, :show] do
     member do
-      get :add_friend, as: 'add'
+      get :add_friend, as: 'add', defaults: { format: 'js' }
       delete :delete_friend, as: 'delete'
     end
   end
