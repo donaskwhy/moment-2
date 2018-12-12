@@ -21,18 +21,19 @@ class UserAlarmsController < ApplicationController
       Friend.create(user1_id: @user1.id, user2_id: @user2.id)
     end
     @user_alarm.destroy
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   def reject_friend #친구 신청 거절
     @user_alarm = UserAlarm.find(params[:id])
     @user_alarm.destroy
-  end
 
-  def cancel_friend #친구 신청 취소
-    @user1 = User.find(params[:id])
-    @user2 = current_user
-    @friendrequest = UserAlarm.find_by(user_id: @user1.id, send_user_id: @user2.id)
-    @friendrequest.destroy
+    respond_to do |format|
+      format.js
+    end
   end
 
 end

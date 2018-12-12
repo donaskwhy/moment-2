@@ -10,6 +10,17 @@ class FriendsController < ApplicationController
     end
   end
 
+  def cancel_friend #친구 신청 취소
+    @user1 = User.find(params[:id])
+    @user2 = current_user
+    @friendrequest = UserAlarm.find_by(user_id: @user1.id, send_user_id: @user2.id)
+    @friendrequest.destroy
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def delete_friend #친구 삭제
     @user1 = User.find(params[:id])
     @user2 = current_user
@@ -19,5 +30,9 @@ class FriendsController < ApplicationController
       friendship = Friend.find_by(user1_id: @user2.id, user2_id: @user1.id)
     end
     friendship.destroy
+
+    respond_to do |format|
+      format.js
+    end
   end
 end
