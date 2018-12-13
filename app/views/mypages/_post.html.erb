@@ -8,15 +8,14 @@
               <div id="<%=post.id%>" class="modal modalsize">
                 <div class="modal-box">
                   <img class="modal-image" src="<%= post.image_url %>">
-                    <div class="modal-text">
-                    <b><%= post.name%></b>
-                    <b><%= ost.title %></b>
-                    <br><%= post.content %>
+                    <div class="modal-option">
+                      <%= link_to 'Edit', edit_post_path(post) %>
+                      <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
                     </div>
-                </div>
-                <div class="modal-footer">
-                  <%= link_to 'Edit', edit_post_path(post) %>
-                  <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+                    <div class="modal-text">
+                      <b><%= post.user_name%></b> | <b><%= post.title %></b>
+                      <br><%= post.content %>
+                    </div>
                 </div>
               </div>
             <!-- Modal Structure ends -->
@@ -51,8 +50,6 @@
   }
 
   .modalsize {
-    max-width: 90%;
-    max-height: 80%;
   }
 
   .modal-box {
@@ -60,12 +57,19 @@
   }
 
   .modal-image {
-    max-width: 100%;
+    width: 100%;
+  }
+
+  .modal-option {
+    text-align: right;
+    padding-right: 24px;
   }
 
   .modal-text {
     text-align: left;
     word-wrap: break-word;
-    padding: 24px;
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-bottom: 24px;
   }
 </style>

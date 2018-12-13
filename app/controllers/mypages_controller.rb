@@ -1,7 +1,7 @@
 class MypagesController < ApplicationController
 
   def show
-    @posts = Post.all.reverse
+    @posts = Post.where(user: params[:id]).reverse
     @user = User.find(params[:id])
   end
 

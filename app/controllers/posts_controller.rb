@@ -8,7 +8,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.name = current_user.name
+    @post.user_name = current_user.name
     @post.user_id = current_user.id
     @post.save
 
