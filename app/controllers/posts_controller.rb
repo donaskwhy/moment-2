@@ -12,19 +12,19 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id
     @post.save
 
-    redirect_to '/mypages/'
+    redirect_to "/mypages/#{current_user.id}"
   end
 
   def update
      @post.update(post_params)
 
-     redirect_to '/mypages/'
+    redirect_to "/mypages/#{current_user.id}"
   end
 
   def destroy
     @post.destroy
 
-    redirect_to '/mypages/'
+    redirect_to "/mypages/#{current_user.id}"
   end
 
   private
