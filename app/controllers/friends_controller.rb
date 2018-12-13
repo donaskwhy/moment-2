@@ -3,7 +3,7 @@ class FriendsController < ApplicationController
   def add_friend #친구 요청 보내기
     @user = User.find(params[:id])
     send_user = current_user
-    UserAlarm.create(user: @user, send_user_id: send_user.id, body: "#{current_user.user_name}님이 친구 요청을 보냈습니다.", alarm_type: "friend")
+    UserAlarm.create(user: @user, send_user_id: send_user.id, body: "#{current_user.name}님이 친구 요청을 보냈습니다.", alarm_type: "friend")
 
     respond_to do |format|
       format.js

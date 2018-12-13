@@ -8,7 +8,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.user_name = current_user.user_name
+    @post.name = current_user.name
     @post.user_id = current_user.id
     @post.save
 
@@ -33,6 +33,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :content, :user_name, :user_id, :image)
+    params.require(:post).permit(:title, :content, :name, :user_id, :image)
   end
 end

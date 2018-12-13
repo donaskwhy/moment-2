@@ -4,12 +4,15 @@
       <div class ="col m4 l4">
         <div class="box">
           <a class="modal-trigger" href="#<%=post.id%>"><img class="image" src="<%= post.image_url %>"></a>
-            <!-- Modal Structure -->
-              <div id="<%=post.id%>" class="modal">
-                <div class="modal-content">
+            <!-- Modal Structure starts -->
+              <div id="<%=post.id%>" class="modal modalsize">
+                <div class="modal-box">
                   <img class="modal-image" src="<%= post.image_url %>">
-                  <%= post.title %>
-                  <%= post.content %>
+                    <div class="modal-text">
+                    <b><%= post.name%></b>
+                    <b><%= ost.title %></b>
+                    <br><%= post.content %>
+                    </div>
                 </div>
                 <div class="modal-footer">
                   <%= link_to 'Edit', edit_post_path(post) %>
@@ -47,7 +50,22 @@
     margin-bottom: 1em;
   }
 
+  .modalsize {
+    max-width: 90%;
+    max-height: 80%;
+  }
+
+  .modal-box {
+    padding: px;
+  }
+
   .modal-image {
     max-width: 100%;
+  }
+
+  .modal-text {
+    text-align: left;
+    word-wrap: break-word;
+    padding: 24px;
   }
 </style>
