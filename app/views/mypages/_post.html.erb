@@ -26,8 +26,8 @@
                         <%= comment.content %>
                         <hr>
                         <% end %>
-                      <form action="/posts/<%= post.id %>/comments" method="POST">
-                        <input type="text" name="content" placeholder="내용">
+                      <form action="/posts/<%= post.id %>/comments" method="POST" data-remote="true">
+                        <input id="comment_content" type="text" name="content" placeholder="내용">
                         <input type="submit" value="작성">
                       </form>
                     </div>
