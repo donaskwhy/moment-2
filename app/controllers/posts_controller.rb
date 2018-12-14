@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_action :authenticate_user!
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
@@ -25,6 +26,11 @@ class PostsController < ApplicationController
     @post.destroy
 
     redirect_to "/mypages/#{current_user.id}"
+  end
+
+  def comments
+    @post = Post.find(params[:id])
+    @post.comments.create(content: params[:content])
   end
 
   private

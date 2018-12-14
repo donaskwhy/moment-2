@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   root 'home#index'
 
+  post 'posts/comments/:id' => 'posts#comments'
   resources :posts do
-    post "/like", to: "likes#like_toggle"
+      post '/like', to: 'likes#like_toggle'
   end
   resources :mypages, only: [:show]
   resources :friends, only: [:create, :show] do

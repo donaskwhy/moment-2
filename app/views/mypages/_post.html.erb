@@ -21,10 +21,19 @@
                       <b><%= post.user_name%></b> | <b><%= post.title %></b>
                       <br><%= post.content %>
                     </div>
+                    <div class="modal-comment">
+                      <% post.comments.each do |comment| %>
+                        <%= comment.content %>
+                        <hr>
+                      <% end %>
+                      <form action="/posts/comments/<%= post.id %>" method="POST">
+                        <input type="text" name="content">
+                        <input type="submit">
+                      </form>
+                    </div>
                 </div>
               </div>
             <!-- Modal Structure ends -->
-            <!-- next: like, comment -->
         </div>
       </div>
     <% end %>
