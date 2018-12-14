@@ -9,6 +9,11 @@
                 <div class="modal-box">
                   <img class="modal-image" src="<%= post.image_url %>">
                     <div class="modal-option">
+                      <% if current_user.is_like?(post) %>
+                        <%= link_to "좋아요 취소", post_like_path(post), method: "POST" %>
+                      <% else %>
+                        <%= link_to "좋아요", post_like_path(post), method: "POST" %>
+                      <% end %>
                       <%= link_to 'Edit', edit_post_path(post) %>
                       <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
                     </div>

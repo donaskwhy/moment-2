@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :posts, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :liked_posts, through: :likes, source: :post
   has_many :friends, dependent: :destroy
   has_many :user_alarms, dependent: :destroy
 
@@ -51,6 +53,10 @@ class User < ApplicationRecord
     tmp2_ids = tmp_friend2.pluck(:user1_id)
     friends = tmp1_ids + tmp2_ids
     User.where(id: friends)
+  end
+
+  def is_like?(post)
+    Like.find_by(user: self, post_id: post.id).present?
   end
 
 end

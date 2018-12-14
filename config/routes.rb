@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   root 'home#index'
 
-  resources :posts
+  resources :posts do
+    post "/like", to: "likes#like_toggle"
+  end
   resources :mypages, only: [:show]
   resources :friends, only: [:create, :show] do
     member do
