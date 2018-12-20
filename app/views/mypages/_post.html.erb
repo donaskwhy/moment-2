@@ -25,11 +25,13 @@
                     </div>
                     <div class="modal-comment">
                       <% post.comments.each do |comment| %>
-                        <b><%= comment.user.name %></b> | <%= comment.content %>
-                        <% if current_user == comment.user %>
-                          <%= link_to 'X', post_comment_path(post, comment), method: :delete, data: { confirm: 'Are you sure?' } %>
-                        <% end %><br>
-                        <% end %>
+                        <div id="comment_<%= comment.id %>">
+                          <b><%= comment.user.name %></b> | <%= comment.content %>
+                          <% if current_user == comment.user %>
+                            <%= link_to 'X', post_comment_path(post, comment), method: :delete, data: { confirm: 'Are you sure?' }, :remote => true %>
+                          <% end %><br>
+                        </div>
+                      <% end %>
                       <form action="/posts/<%= post.id %>/comments" method="POST" data-remote="true">
                         <input id="comment_content" type="text" name="content" placeholder="내용">
                         <input type="submit" value="작성">
