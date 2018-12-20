@@ -27,7 +27,7 @@
                       <% post.comments.each do |comment| %>
                         <b><%= comment.user.name %></b> | <%= comment.content %>
                         <% if current_user == comment.user %>
-                          <%= link_to 'X', post_comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' } %>
+                          <%= link_to 'X', post_comment_path(post, comment), method: :delete, data: { confirm: 'Are you sure?' } %>
                         <% end %><br>
                         <% end %>
                       <form action="/posts/<%= post.id %>/comments" method="POST" data-remote="true">
