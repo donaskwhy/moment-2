@@ -1,77 +1,31 @@
-<div class="grid">
-  <div class="grid-box a"></div>
-  <div class="grid-box b"><h5>info</h5><br><h6></h6></div>
-  <div class="grid-box c">
-    <% if current_user == @user %>
-        <%= link_to "친구목록", friend_path(current_user) %>
-      <% elsif current_user.is_friend(@user) == true %>
-        <%= link_to "친구끊기", delete_friend_path(:friend_id => @user.id), method: 'delete', remote: true %>
-      <% elsif current_user.received_friend(@user) == true %>
-        <%= link_to "친구요청응답", user_alarm_path(current_user) %>
-      <% elsif current_user.sent_friend(@user) == true %>
-        <%= link_to "친구요청취소", cancel_friend_path(:friend_id => @user.id), method: 'delete', remote: true %>
-      <% elsif current_user.is_friend(@user) == false %>
-        <%= link_to "친구추가", add_friend_path(:friend_id => @user.id), method: 'get', remote: true %>
-    <% end %>
-  </div>
-  <div class="grid-box d">
-    random word
-  </div>
-  <div class="grid-box e">
-    <h6>do</h6><br>
-  </div>
+<div id="css_mypage">
+  <div class="grid">
+    <div class="grid-box a">grid a</div>
+    <div class="grid-box b"><h5>grid b</h5><br><h6></h6></div>
+    <div class="grid-box c">
+      <% if current_user == @user %>
+          <%= link_to "친구목록", friend_path(current_user) %>
+        <% elsif current_user.is_friend(@user) == true %>
+          <%= link_to "친구끊기", delete_friend_path(:friend_id => @user.id), method: 'delete', remote: true %>
+        <% elsif current_user.received_friend(@user) == true %>
+          <%= link_to "친구요청응답", user_alarm_path(current_user) %>
+        <% elsif current_user.sent_friend(@user) == true %>
+          <%= link_to "친구요청취소", cancel_friend_path(:friend_id => @user.id), method: 'delete', remote: true %>
+        <% elsif current_user.is_friend(@user) == false %>
+          <%= link_to "친구추가", add_friend_path(:friend_id => @user.id), method: 'get', remote: true %>
+      <% end %>
+    </div>
+    <div class="grid-box d">    grid d  </div>
+    <div class="grid-box e">    grid e  </div>
   </div>
 
-<div class="">
-  <ul class="tabs tabs-fixed-width tab-demo z-depth-1">
-    <li class="tab waves-effect waves-pink"><a href="">프로필 메인</a></li>
-    <li class="tab waves-effect waves-pink"><a href="">앨범</a></li>
-    <li class="tab waves-effect waves-pink"><%= current_user.name %></li>
-    <li class="tab waves-effect waves-pink"><a href="">아카이브</a></li>
-    <li class="tab waves-effect waves-pink"><a href="">태그됨</a></li>
-  </ul>
+  <div class="">
+    <ul class="tabs tabs-fixed-width tab-demo z-depth-1">
+      <li class="tab waves-effect waves-pink"><a href="">프로필 메인</a></li>
+      <li class="tab waves-effect waves-pink"><a href="">앨범</a></li>
+      <li class="tab waves-effect waves-pink"><%= current_user.name %></li>
+      <li class="tab waves-effect waves-pink"><a href="">아카이브</a></li>
+      <li class="tab waves-effect waves-pink"><a href="">태그됨</a></li>
+    </ul>
+  </div>
 </div>
-
-
-<style>
-  .grid {
-    width: 100%;
-    display: grid;
-    grid-template: 1fr 1fr / 2fr 6fr 1fr 1fr;
-  }
-
-  .grid .grid-box {
-    background-color: #FAFAFA;
-    color: black;
-    border-radius: 5px;
-    border: 2px dodgerblue solid;
-    grid-gap: 10px;
-  }
-
-  .grid .a {
-    grid-row-start: 1;
-    grid-row-end: 3;
-  }
-
-  .grid .b {
-    grid-row-start: 1;
-    grid-row-end: 2;
-  }
-
-  .grid .c {
-    grid-row-start: 1;
-    grid-row-end: 2;
-  }
-
-  .grid .d {
-    grid-row-start: 1;
-    grid-row-end: 2;
-  }
-
-  .grid .e {
-    grid-row-start: 2;
-    grid-row-end: 3;
-    grid-column-start: 2;
-    grid-column-end: 5;
-  }
-</style>
