@@ -1,2 +1,3 @@
-$(".grid-box.c a").text("친구요청취소");
-$(".grid-box.c a").attr("href", "http://localhost:3000/friends/<%= @user.id %>/cancel_friend?friend_id=<%= @user.id %>");
+$(".grid-box.c").html(`
+<a data-remote="true" data-method="delete" href="/friends/<%= @user.id %>/cancel_friend">친구요청취소</a>
+`);

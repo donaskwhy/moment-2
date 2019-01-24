@@ -1,2 +1,3 @@
 $('#comment_content').val("");
-$('.modal-comment').append("<%= @comment.content %><hr>");
+
+$('.modal-comment').append(`<b><%= @comment.user.name %></b> | <%= @comment.content %> <%= link_to 'X', post_comment_path(@post, @comment), method: :delete, data: { confirm: 'Are you sure?' }, :remote => true %><br>`);

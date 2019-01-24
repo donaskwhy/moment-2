@@ -1,2 +1,3 @@
-$(".grid-box.c a").text("친구추가");
-$(".grid-box.c a").attr("href", "http://localhost:3000/friends/<%= @user1.id %>/add_friend?friend_id=<%= @user1.id %>");
+$(".grid-box.c").html(`
+<a data-remote="true" data-method="get" href="/friends/<%= @user1.id %>/add_friend">친구추가</a>
+`);

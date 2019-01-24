@@ -1,11 +1,12 @@
+
 <div class ="box-container">
   <div class="row">
     <% @posts.each do |post| %>
       <div class ="col m4 l4">
         <div class="box">
-          <a class="modal-trigger" href="#<%=post.id%>"><img class="image" src="<%= post.image_url %>"></a>
+          <a class="modal-trigger" href="#post-<%=post.id%>"><img class="image" src="<%= post.image_url %>"></a>
             <!-- Modal Structure starts -->
-              <div id="<%=post.id%>" class="modal modalsize">
+              <div id="post-<%=post.id%>" class="modal modalsize">
                 <div class="modal-box">
                   <img class="modal-image" src="<%= post.image_url %>">
                     <div class="modal-option">
@@ -14,7 +15,7 @@
                       <% else %>
                         <%= link_to "좋아요", post_like_path(post), method: "POST" %>
                       <% end %>
-                      <% if current_user == post.user %>
+                      <% if current_user == post.user %>/mypages/1
                         <%= link_to 'Edit', edit_post_path(post) %>
                         <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
                       <% end %>
@@ -22,6 +23,8 @@
                     <div class="modal-text">
                       <b><%= post.user_name%></b> | <b><%= post.title %></b>
                       <br><%= post.content %>
+  })
+
                     </div>
                     <div class="modal-comment">
                       <% post.comments.each do |comment| %>
@@ -32,11 +35,12 @@
                           <% end %><br>
                         </div>
                       <% end %>
+                      </div>
                       <form action="/posts/<%= post.id %>/comments" method="POST" data-remote="true">
                         <input id="comment_content" type="text" name="content" placeholder="내용">
                         <input type="submit" value="작성">
                       </form>
-                    </div>
+
                 </div>
               </div>
             <!-- Modal Structure ends -->
@@ -45,3 +49,11 @@
     <% end %>
   </div>
 </div>
+
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.modal').modal();
+  })
+
+</script>

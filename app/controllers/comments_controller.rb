@@ -7,6 +7,7 @@ class CommentsController < ApplicationController
     @comment.content = params[:content]
     @comment.user_id = current_user.id
     @comment.post_id = params[:post_id]
+    @post = @comment.post
     if @comment.save
       respond_to do |format|
         format.js
